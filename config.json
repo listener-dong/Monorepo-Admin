@@ -1,0 +1,23 @@
+{
+  "base": {
+    "name": "基座",
+    "packageName": "@package/base",
+    "port": 5173,
+    "script":"dev",
+    "path": "./packages/base"
+  },
+  "child_one": {
+    "name": "子应用—1",
+    "packageName": "@package/one",
+    "port": 6001,
+    "script":"dev",
+    "path": "./packages/child_one"
+  },
+  "child_two": {
+    "name": "子应用—2",
+    "packageName": "@package/two",
+    "port": 6002,
+    "script":"dev",
+    "path": "./packages/child_two"
+  }
+}

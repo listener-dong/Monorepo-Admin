@@ -1,0 +1,9 @@
+packages:
+  # 前端项目
+  - 'packages/**/*'
+  # 公共组件
+  - 'components/**'
+  # 接口
+  - 'api/**'
+  # exclude packages that are inside test directories
+  - '!**/test/**'

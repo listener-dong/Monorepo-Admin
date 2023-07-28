@@ -1,0 +1,21 @@
+{
+  "name": "monorepo-admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --no-warnings scripts/dev.js",
+    "build": "node --no-warnings scripts/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@micro-zoe/micro-app": "^0.8.11",
+    "detect-port": "^1.5.1",
+    "execa": "^7.1.1",
+    "inquirer": "^9.2.8"
+  }
+}
