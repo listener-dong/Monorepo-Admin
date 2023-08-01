@@ -5,17 +5,6 @@ import fs from "fs/promises";
 import path from "path";
 
 async function buildPackages() {
-
-  // 判断根目录是否存在 dist 文件夹，如果存在则先删除
-  const distPath = path.resolve("dist");
-  const distExists = await fs.access(distPath)
-    .then(() => true)
-    .catch(() => false);
-
-  if (distExists) {
-    console.log("删除已存在的 dist 文件夹...");
-    await fs.rm(distPath, { recursive: true, force: true });
-  }
   // 提示用户选择要打包的应用
   const answers = await inquirer.prompt([
     {

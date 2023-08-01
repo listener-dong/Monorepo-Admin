@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node --no-warnings scripts/dev.js",
-    "build": "node --no-warnings scripts/build.js",
+    "build": "rm -r dist && node --no-warnings scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
