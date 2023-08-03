@@ -10,6 +10,7 @@ const occupiedList = [];
 async function checkPort(key) {
   const { port } = projects[key];
   const detectedPort = await detect(port);
+
   return {
     package: key,
     isOccupied: detectedPort !== port,
@@ -17,8 +18,8 @@ async function checkPort(key) {
 }
 
 // 捕获SIGINT信号
-process.on('SIGINT', () => {
-  console.log('Received SIGINT signal. Terminating all applications...');
+process.on("SIGINT", () => {
+  console.log("Received SIGINT signal. Terminating all applications...");
   // 终止所有的应用
   process.exit(0);
 });
@@ -30,9 +31,9 @@ let selected = [];
 async function runProject(project) {
   try {
     console.log(`\nStarting ${project.name}...\n`);
-    const { stdout } = await execa('pnpm', ['run', project.script], {
+    const { stdout } = await execa("pnpm", ["run", project.script], {
       cwd: project.path,
-      stdio: 'inherit',
+      stdio: "inherit",
     });
     console.log(stdout);
   } catch (error) {
@@ -52,13 +53,14 @@ async function main() {
   // 获取用户选择的子应用
   const { selectedProjects } = await inquirer.prompt([
     {
-      type: 'checkbox',
-      name: 'selectedProjects',
-      message: '请选择要启动的子应用:',
+      type: "checkbox",
+      name: "selectedProjects",
+      message: "请选择要启动的子应用:",
       choices: Object.keys(projects).map((key) => {
         const { name, packageName, port } = projects[key];
+
         return {
-          checked: key == "base", // 判断是否为基础应用，默认选中
+          checked: key === "base", // 判断是否为基础应用，默认选中
           name: `${name}(${packageName}:${port})`, // 显示应用名称和端口号
           value: projects[key],
           disabled: occupiedList.find((item) => item.package === key).isOccupied // 判断是否已启动，禁用选项
@@ -72,11 +74,16 @@ async function main() {
   selected = selectedProjects;
 
   if (selectedProjects.length === 0) {
-    console.log('No projects selected.');
+    console.log("No projects selected.");
+
     return;
   }
 
-  console.log(`\nSelected projects: ${selectedProjects.map((project) => project.name).join(', ')}\n`);
+  console.log(
+    `\nSelected projects: ${selectedProjects
+      .map((project) => project.name)
+      .join(", ")}\n`
+  );
 
   // 逐个启动选择的子应用
   for (const project of selectedProjects) {

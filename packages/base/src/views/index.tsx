@@ -12,14 +12,17 @@ export default function buildPage(name: string) {
     name,
     setup() {
       console.log(name, url);
-      return () => (<div>
-        <micro-app
-          name={name}
-          url={`http://localhost:6001/`}
-          disableScopecss={config[name].disableScopecss}
-          baseroute={`/base/${name}`}
+
+      return () => (
+        <div>
+          <micro-app
+            name={name}
+            url="http://localhost:6001/"
+            disableScopecss={config[name].disableScopecss}
+            baseroute={`/base/${name}`}
           />
-      </div>);
+        </div>
+      );
     },
   });
 }

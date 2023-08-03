@@ -19,5 +19,12 @@
     "port": 6002,
     "script":"dev",
     "path": "./packages/child_two"
+  },
+  "child_three": {
+    "name": "子应用—3",
+    "packageName": "@package/three",
+    "port": 6003,
+    "script":"dev",
+    "path": "./packages/child_three"
   }
 }

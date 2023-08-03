@@ -13,6 +13,7 @@ async function buildPackages() {
       message: "请选择要打包的应用",
       choices: Object.keys(config).map((key) => {
         const { name, packageName } = config[key];
+
         return {
           name: `${name}(${packageName})`,
           value: key,
@@ -48,7 +49,10 @@ async function buildPackages() {
           const targetFilePath = path.resolve(outputPath, file);
           await fs.rename(sourceFilePath, targetFilePath);
           // 移除各个项目中的dist文件
-          await fs.rm(`./packages/${item}/dist`, { recursive: true, force: true });
+          await fs.rm(`./packages/${item}/dist`, {
+            recursive: true,
+            force: true,
+          });
         })
       );
     })
